@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import anime from 'animejs'
+import * as anime from 'animejs'
 import { AuthService, LoginCredentials } from '../../lib/auth-service'
 import { Lock, Mail } from 'lucide-react'
 
