@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import * as anime from 'animejs'
+import { useState } from 'react'
 import { AuthService, LoginCredentials } from '../../lib/auth-service'
 import { Lock, Mail } from 'lucide-react'
 
@@ -8,27 +7,6 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    // Entrance animation for the login card
-    anime({
-      targets: '.login-card',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 800,
-      easing: 'easeOutQuad'
-    })
-
-    // Form elements entrance
-    anime({
-      targets: '.form-input',
-      opacity: [0, 1],
-      translateX: [-20, 0],
-      duration: 600,
-      easing: 'easeOutQuad',
-      delay: anime.stagger(100)
-    })
-  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
