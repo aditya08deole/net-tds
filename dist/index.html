@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvaraTDS - Water Quality Monitoring</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: white;
+        color: #1f2937;
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .loading-container {
+        text-align: center;
+      }
+      .spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid rgba(219, 234, 254, 0.8);
+        border-top-color: #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      .loading-text {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #111827;
+      }
+      .loading-subtext {
+        font-size: 14px;
+        color: #6b7280;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-0sayO8aS.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BIfpOF4_.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading EvaraTDS...</p>
+        <p class="loading-subtext">Initializing application</p>
+      </div>
+    </div>
+  </body>
+</html>
