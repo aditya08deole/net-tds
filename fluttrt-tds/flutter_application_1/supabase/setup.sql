@@ -14,6 +14,7 @@ create table if not exists alerts (
 );
 
 alter table alerts enable row level security;
+drop policy if exists "Enable all access for authenticated users" on alerts;
 create policy "Enable all access for authenticated users" on alerts for all using (auth.role() = 'authenticated');
 
 create table if not exists sensor_data (
@@ -26,6 +27,7 @@ create table if not exists sensor_data (
 );
 
 alter table sensor_data enable row level security;
+drop policy if exists "Enable all access for authenticated users" on sensor_data;
 create policy "Enable all access for authenticated users" on sensor_data for all using (auth.role() = 'authenticated');
 
 
@@ -41,11 +43,13 @@ create table if not exists device_heartbeat (
 
 alter table device_heartbeat enable row level security;
 
+drop policy if exists "Workers can insert/update heartbeat" on device_heartbeat;
 create policy "Workers can insert/update heartbeat"
   on device_heartbeat for all
   using (true)
   with check (true);
 
+drop policy if exists "Everyone can view heartbeat" on device_heartbeat;
 create policy "Everyone can view heartbeat"
   on device_heartbeat for select
   using (true);
@@ -62,10 +66,12 @@ create table if not exists device_state_history (
 
 alter table device_state_history enable row level security;
 
+drop policy if exists "Workers can insert history" on device_state_history;
 create policy "Workers can insert history"
   on device_state_history for insert
   with check (true);
 
+drop policy if exists "Admins can view history" on device_state_history;
 create policy "Admins can view history"
   on device_state_history for select
   using (
@@ -94,6 +100,7 @@ create table if not exists escalation_rules (
 );
 
 alter table escalation_rules enable row level security;
+drop policy if exists "Read rules" on escalation_rules;
 create policy "Read rules" on escalation_rules for select using (true);
 
 -- Default Rules
@@ -187,6 +194,7 @@ create table if not exists security_events (
 );
 
 alter table security_events enable row level security;
+drop policy if exists "Admins view security logs" on security_events;
 create policy "Admins view security logs" on security_events for select using (
   exists (select 1 from profiles where profiles.id = auth.uid() and role in ('admin','super_admin'))
 );
@@ -230,6 +238,7 @@ create table if not exists frontend_errors (
 );
 
 alter table frontend_errors enable row level security;
+drop policy if exists "Public insert errors" on frontend_errors;
 create policy "Public insert errors" on frontend_errors for insert with check (true); 
 -- Allow public insert for unauthenticated crashes, or restrict if strictly internal.
 
