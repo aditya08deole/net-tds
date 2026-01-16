@@ -268,4 +268,5 @@ create table if not exists user_settings (
 );
 
 alter table user_settings enable row level security;
+drop policy if exists "Users manage own settings" on user_settings;
 create policy "Users manage own settings" on user_settings for all using (user_id = auth.uid());
